@@ -15,7 +15,8 @@ This are the instructions to deploy the Zero Trust application with AWS Verified
 2) You need to have a public domain, like: aws.example.com
 3) You need to have a public certificate hosted in AWS ACM for the previous domain
 4) You need to have the Amazon VPC Lattice part of the code deployed
-5) Create the Amazon Route53 private hosted zone for Amazon VPC Lattice service
+5) Create the Amazon Route53 private hosted zone for Amazon VPC Lattice service. Something like this: 
+![vpclattice](/images/vpclattice.png)
 6) Create an Amazon ECR repository
 
 ## Building the Image container
@@ -55,7 +56,7 @@ aws ecr get-login-password --region ${REGION} | docker login --username AWS --pa
 docker pull ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/art-container:latest-v2
 docker run -d --network host --name art-container -p 80:80 -e GREETING="Zero Trust Demo" -e MIRROR_REQ=true -e REGION=${REGION} ${ACCOUNT_ID}.dkr.ecr.eu-west-1.amazonaws.com/art-container:latest-v2
 ```
-3) Now the application is running. This is the application behind your AWS Verified Access infrastructure
+3) Now the container is running. This is the application behind your AWS Verified Access infrastructure. We are almost finished
 4) Go to the Amazon VPC console, and on the left pane click on "Verified Access endpoints" and in the "Details" tab copy the "Endpoint domain"
 5) Go to Amazon Route53 and click on "Hosted Zones". Select your public domain and click "Create Record"
 6) Put whatever subdomain you want. Record type "CNAME" and paste the Endpoint domain you copied in step 4 as the value. Something like this: 
@@ -66,9 +67,3 @@ docker run -d --network host --name art-container -p 80:80 -e GREETING="Zero Tru
 ## Contributing
  - Daniel Neri
  - Pablo Sánchez
-
-![Screenshot 1](/images/screenshot1.png)
-Description of the screenshot.
-
-![Screenshot 2](/images/screenshot2.png)
-Description of the screenshot.
