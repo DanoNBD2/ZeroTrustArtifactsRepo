@@ -4,14 +4,17 @@ This are the instructions to deploy the Zero Trust application with AWS Verified
 
 ## Table of Contents
 
-- [Installation](#installation)
+- [Building the Image container](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
 
-## Installation
+## Building the Image container
 
 Instructions on how to install or set up your project.
+\`\`\`
+git clone
+\`\`\`
 
 ## Usage
 
