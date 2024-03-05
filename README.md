@@ -59,7 +59,7 @@ docker run -d --network host --name art-container -p 80:80 -e GREETING="Zero Tru
 4) Go to the Amazon VPC console, and on the left pane click on "Verified Access endpoints" and in the "Details" tab copy the "Endpoint domain"
 5) Go to Amazon Route53 and click on "Hosted Zones". Select your public domain and click "Create Record"
 6) Put whatever subdomain you want. Record type "CNAME" and paste the Endpoint domain you copied in step 4 as the value. Something like this: 
-(FOTO R53 console)
+![R53](/images/R53.png)
 7) Test the application: Paste the recently created "Record name" in the browser and you'll see something like this: 
 (FOTO APP)
 
