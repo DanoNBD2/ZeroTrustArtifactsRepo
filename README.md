@@ -55,16 +55,17 @@ aws ecr get-login-password --region ${REGION} | docker login --username AWS --pa
 docker pull ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/art-container:latest-v2
 docker run -d --network host --name art-container -p 80:80 -e GREETING="Zero Trust Demo" -e MIRROR_REQ=true -e REGION=${REGION} ${ACCOUNT_ID}.dkr.ecr.eu-west-1.amazonaws.com/art-container:latest-v2
 ```
+3) Now the application is running. This is the application behind your AWS Verified Access infrastructure
+4) Go to the Amazon VPC console, and on the left pane click on "Verified Access endpoints" and in the "Details" tab copy the "Endpoint domain"
+5) Go to Amazon Route53 and click on "Hosted Zones". Select your public domain and click "Create Record"
+6) Put whatever subdomain you want. Record type "CNAME" and paste the Endpoint domain you copied in step 4 as the value. Something like this: 
+(FOTO R53 console)
+7) Test the application: Paste the recently created "Record name" in the browser and you'll see something like this: 
+(FOTO APP)
 
 ## Contributing
-
-Guidelines for contributors or how others can contribute to your project.
-
-## License
-
-Information about the license under which your project is distributed.
-
-## Screenshots
+ - Daniel Neri
+ - Pablo Sánchez
 
 ![Screenshot 1](/images/screenshot1.png)
 Description of the screenshot.
