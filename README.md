@@ -44,6 +44,10 @@ Select your desired AWS Region, for example, eu-west-1 (Ireland) and click this 
 
 [![Launch CFN stack](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://eu-west-1.console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/quickcreate?templateUrl=https://technical-tracks-march2024.s3.eu-west-1.amazonaws.com/ava-cognito.yaml)
 
+The parameters for the cloudformation template are the following: 
+
+![cfn-template](/images/cfn-template.png)
+
 The template takes approximate 25 minutes to deploy.
 
 ### Configure the application
