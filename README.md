@@ -4,22 +4,29 @@ This are the instructions to deploy the Zero Trust application with AWS Verified
 
 ## Table of Contents
 
-- [Building the Image container](#installation)
-- [Usage](#usage)
+- [Requirements](#installation)
+- [Building the Image container](#usage)
 - [Contributing](#contributing)
 - [License](#license)
 
+## Requirements
+
+1) You need to have a public domain, like: aws.example.com
+2) You need to have a public certificate hosted in AWS ACM for the previous domain
+3) You need to have the Amazon VPC Lattice part of the code deployed
+4) Create the Amazon Route53 private hosted zone for Amazon VPC Lattice service
+5) Create an Amazon ECR repository
+
 ## Building the Image container
 
-Instructions on how to install or set up your project.
-\`\`\`
-git clone
-\`\`\`
-
-## Usage
-
-Guidelines on how to use your project or its features.
-
+1) Clone the art-container folder to your local environment and open the app/main.py in your favorite code editor
+2) In the line 117 of the file, change <https://YourLatticeServiceDomain.com> for your Amazon VPC Lattice service domain
+3) Open the command line in the art-container folder and run the following commands to build the docker image and to upload it to the previous created Amazon ECR repository
+```bash
+docker build --platform=linux/amd64 -t art-container .
+docker tag art-container:latest "YourAccountID".dkr.ecr."YourAWSRegion".amazonaws.com/art-container:latest-v2
+docker push "YourAccountID".dkr.ecr.YourAWSRegion.amazonaws.com/art-container:latest-v2
+```
 ### Subsection 1
 
 Additional details or subsections under Usage.
