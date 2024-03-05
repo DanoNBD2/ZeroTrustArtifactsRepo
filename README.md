@@ -16,9 +16,17 @@ This are the instructions to deploy the Zero Trust application with AWS Verified
 3) You need to have a public certificate hosted in AWS ACM for the previous domain
 4) You need to have the Amazon VPC Lattice part of the code deployed
 5) Create the Amazon Route53 private hosted zone for Amazon VPC Lattice service. Something like this: 
+
 ![vpclattice](/images/vpclattice.png)
+
 6) Create an Amazon ECR repository. With the default settings: 
+
 ![ecr](/images/ecr.png)
+
+And you will use the URI of this recently created ECR repository later
+
+![ecr-repo](/images/ecr-repo.png)
+
 
 ## Building the Image container
 
