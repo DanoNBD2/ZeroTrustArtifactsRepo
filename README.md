@@ -1,13 +1,13 @@
 # ZeroTrustArtifactsRepo
 
-This are the instructions to deploy the Zero Trust application with AWS Verified Access and Amazon VPC Lattice Integration
+This are the instructions to deploy the Zero Trust application with AWS Verified Access and Amazon VPC Lattice Integration. Note: This is the first version of the code and you'll need do some manual stuff. The second version will have all of this automated for you.
 
 ## Table of Contents
 
 - [Requirements](#requirements)
 - [Building the Image container](#building)
 - [Deploying the Infrastructure](#deploying)
-- [License](#license)
+- [Configure the application](#license)
 
 ## Requirements
 
@@ -34,9 +34,27 @@ Select your desired AWS Region, for example, eu-west-1 (Ireland) and click this 
 
 [![Launch CFN stack](https://s3.amazonaws.com/cloudformation-examples/cloudformation-launch-stack.png)](https://eu-west-1.console.aws.amazon.com/cloudformation/home?region=eu-west-1#/stacks/quickcreate?templateUrl=https://technical-tracks-march2024.s3.eu-west-1.amazonaws.com/ava-cognito.yaml)
 
-### Subsection 2
+The template takes approximate 25 minutes to deploy.
 
-More information or subsections under Usage.
+### Configure the application
+
+1) Go to Amazon EC2 console, select the EC2 instance called "EC2HostingTheAVAWorkload" and connect into it using Sessions Mananger
+2) Run the following commands:
+```bash
+sudo yum update -y
+sudo yum install docker -y
+sudo service docker start
+sudo systemctl enable docker
+sudo su -
+usermod -aG docker ec2-user
+exit
+sudo su -
+ACCOUNT_ID=$(aws sts get-caller-identity --query "Account" --output text)
+REGION=$(curl -s http://169.254.169.254/latest/meta-data/placement/availability-zone | sed 's/.$//')
+aws ecr get-login-password --region ${REGION} | docker login --username AWS --password-stdin ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com
+docker pull ${ACCOUNT_ID}.dkr.ecr.${REGION}.amazonaws.com/art-container:latest-v2
+docker run -d --network host --name art-container -p 80:80 -e GREETING="Zero Trust Demo" -e MIRROR_REQ=true -e REGION=${REGION} ${ACCOUNT_ID}.dkr.ecr.eu-west-1.amazonaws.com/art-container:latest-v2
+```
 
 ## Contributing
 
