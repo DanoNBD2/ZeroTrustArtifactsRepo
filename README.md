@@ -76,7 +76,9 @@ docker run -d --network host --name art-container -p 80:80 -e GREETING="Zero Tru
 
 ![R53](/images/R53.png)
 
-7) Test the application: Paste the recently created "Record name" in the browser and you'll see something like this: 
+7) Go to Amazon Cognito and in the user pool created, create the user to access your application (with the default settings):
+
+8) Test the application: Paste the recently created "Record name" in the browser and you'll see something like this (after being successfully authenticated): 
 
 ![Final](/images/final.png)
 
