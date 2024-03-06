@@ -74,10 +74,13 @@ docker run -d --network host --name art-container -p 80:80 -e GREETING="Zero Tru
 5) Go to Amazon Route53 and click on "Hosted Zones". Select your public domain and click "Create Record"
 6) Put whatever subdomain you want. Record type "CNAME" and paste the Endpoint domain you copied in step 4 as the value. Something like this: 
 
-![Final](/images/final.png)
+![R53](/images/R53.png)
 
 7) Test the application: Paste the recently created "Record name" in the browser and you'll see something like this: 
-(FOTO APP)
+
+![Final](/images/final.png)
+
+The yellow rectangle is the information coming from your Amazon VPC Lattice Service!!
 
 ## Contributing
  - Daniel Neri
