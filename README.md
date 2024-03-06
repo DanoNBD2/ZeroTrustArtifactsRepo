@@ -1,6 +1,6 @@
 # ZeroTrustArtifactsRepo
 
-This are the instructions to deploy the Zero Trust application with AWS Verified Access and Amazon VPC Lattice Integration. Note: This is the first version of the code and you'll need do some manual stuff. The second version will have all of this automated for you.
+This are the instructions to deploy the Zero Trust application with AWS Verified Access and Amazon VPC Lattice Integration. * Note: This is the first version of the code and you'll need do some manual stuff. The second version will have all of this automated for you. *
 
 ## Table of Contents
 
